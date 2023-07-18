@@ -1,0 +1,26 @@
+use admin
+db.createUser(
+  {
+    user: "dba",
+    pwd: "2E262EE54E2000A3E39942E317CC7362",
+    roles: [ { role: "root", db: "admin" } ]
+  }
+)
+
+use SV
+db.createUser(
+  {
+    user: "svtool",
+    pwd: "12086F465CEB74B3BD676C39DA07900C",
+    roles: [ { role: "dbOwner", db: "SV" } ]
+  }
+)
+
+use LAS
+db.createUser(
+  {
+    user: "las",
+    pwd: "12086F465CEB74B3BD676C39DA07900C",
+    roles: [ { role: "dbOwner", db: "LAS" } ]
+  }
+)

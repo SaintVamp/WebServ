@@ -1,0 +1,85 @@
+<Configuration status="WARN" monitorInterval="500">
+    <!--定义日志储存文件目录-->
+
+    <Appenders>
+        <!--控制台输出所有日志-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{DEFAULT}][%-5level][%logger{36}]&gt;&gt;&gt;%msg%n"/>
+        </Console>
+
+        <RollingRandomAccessFile name="contract" fileName="/opt/data/logs/Serv/contract.log"
+                                 filePattern="/opt/data/logs/Serv/contract-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%d{DEFAULT}][%-5level][%logger{36}]&gt;&gt;&gt;%msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="anjian" fileName="/opt/data/logs/Serv/anjian.log"
+                                 filePattern="/opt/data/logs/Serv/anjian-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%d{DEFAULT}][%-5level][%logger{36}]&gt;&gt;&gt;%msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="megapolis" fileName="/opt/data/logs/Serv/megapolis.log"
+                                 filePattern="/opt/data/logs/Serv/megapolis-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%d{DEFAULT}][%-5level][%logger{36}]&gt;&gt;&gt;%msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="common" fileName="/opt/data/logs/Serv/common.log"
+                                 filePattern="/opt/data/logs/Serv/common-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%d{DEFAULT}][%-5level][%logger{36}]&gt;&gt;&gt;%msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="control" fileName="/opt/data/logs/Serv/control.log"
+                                 filePattern="/opt/data/logs/Serv/control-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%d{DEFAULT}][%-5level][%logger{36}]&gt;&gt;&gt;%msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="local" fileName="/opt/data/logs/Serv/local.log"
+                                 filePattern="/opt/data/logs/Serv/local-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%d{DEFAULT}][%-5level][%logger{36}]&gt;&gt;&gt;%msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingRandomAccessFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+        </Root>
+        <Logger name="contract" level="info" additivity="false">
+            <AppenderRef ref="contract"/>
+        </Logger>
+        <Logger name="anjian" level="info" additivity="false">
+            <AppenderRef ref="anjian"/>
+        </Logger>
+        <Logger name="megapolis" level="info" additivity="false">
+            <AppenderRef ref="megapolis"/>
+        </Logger>
+        <Logger name="common" level="info" additivity="false">
+            <AppenderRef ref="common"/>
+        </Logger>
+        <Logger name="control" level="info" additivity="false">
+            <AppenderRef ref="control"/>
+        </Logger>
+        <Logger name="local" level="info" additivity="false">
+            <AppenderRef ref="local"/>
+        </Logger>
+
+    </Loggers>
+</Configuration>

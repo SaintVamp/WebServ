@@ -1,0 +1,28 @@
+mongoexport --port 30000 -d SV -c svData -o /sv/svData.json --type json
+mongoexport --port 30000 -d SV -c svAuth -o /sv/svAuth.json --type json
+
+mongoexport --port 30000 -d LAS -c majorPointType -o /sv/majorPointType.json --type json
+mongoexport --port 30000 -d LAS -c minorPointType -o /sv/minorPointType.json --type json
+mongoexport --port 30000 -d LAS -c point -o /sv/point.json --type json
+mongoexport --port 30000 -d LAS -c price -o /sv/price.json --type json
+mongoexport --port 30000 -d LAS -c priceType -o /sv/priceType.json --type json
+mongoexport --port 30000 -d LAS -c seq -o /sv/seq.json --type json
+mongoexport --port 30000 -d LAS -c source -o /sv/source.json --type json
+mongoexport --port 30000 -d LAS -c student -o /sv/student.json --type json
+
+
+
+./mongoimport --port 30000 -d SV -c svData --file /sv/svData.json --type json
+./mongoimport --port 30000 -d SV -c svAuth --file /sv/svAuth.json --type json
+
+./mongoimport --port 30000 -d LAS -c majorPointType --file /sv/majorPointType.json --type json
+./mongoimport --port 30000 -d LAS -c minorPointType --file /sv/minorPointType.json --type json
+./mongoimport --port 30000 -d LAS -c point --file /sv/point.json --type json
+./mongoimport --port 30000 -d LAS -c price --file /sv/price.json --type json
+./mongoimport --port 30000 -d LAS -c priceType --file /sv/priceType.json --type json
+./mongoimport --port 30000 -d LAS -c seq --file /sv/seq.json --type json
+./mongoimport --port 30000 -d LAS -c source --file /sv/source.json --type json
+./mongoimport --port 30000 -d LAS -c student --file /sv/student.json --type json
+
+mysql root/Wp2Sy1314@8004
+sv/sv@8004

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--新建实体映射文件Test.xml，这里的namespace就是写TestMapper全类名，否则不能使用动态代理的方式调用接口TestMapper-->
+<mapper namespace="com.svt.mapper.ToolUpdateMapper">
+	<select id="list" resultType="ToolUpdate">
+		SELECT *
+		FROM ToolUpdate
+	</select>
+	<select id="count" resultType="Integer">
+		SELECT count(*)
+		FROM ToolUpdate
+	</select>
+	<select id="getUpdateInfo" parameterType="String" resultType="ToolUpdate">
+		SELECT *
+		FROM ToolUpdate
+		WHERE DeviceName = #{DeviceName}
+	</select>
+	<select id="getVersion" parameterType="String" resultType="Long">
+		SELECT AppVersion
+		FROM ToolUpdate
+		WHERE DeviceName = #{DeviceName}
+	</select>
+	<insert id="insert" parameterType="ToolUpdate">
+		INSERT INTO ToolUpdate
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="PackageName!=null">PackageName,</if>
+			<if test="UpdateType!=null">UpdateType,</if>
+			<if test="AppName!=null">AppName,</if>
+			<if test="UpdateContent!=null">UpdateContent,</if>
+			<if test="UpdateUrl!=null">UpdateUrl,</if>
+			<if test="PackageSize!=null">PackageSize,</if>
+			<if test="AppUpdateTime!=null">AppUpdateTime,</if>
+			<if test="StudioProjectKey!=null">StudioProjectKey,</if>
+			<if test="DeviceName!=null">DeviceName,</if>
+			<if test="InstanceDataUploadInterval!=null">InstanceDataUploadInterval,</if>
+			<if test="UpgradeMode!=null">UpgradeMode,</if>
+			<if test="AppVersion!=null">AppVersion,</if>
+		</trim>
+		<trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+			<if test="PackageName!=null">PackageName=#{PackageName},</if>
+			<if test="UpdateType!=null">UpdateType=#{UpdateType},</if>
+			<if test="AppName!=null">AppName=#{AppName},</if>
+			<if test="UpdateContent!=null">UpdateContent=#{UpdateContent},</if>
+			<if test="UpdateUrl!=null">UpdateUrl=#{UpdateUrl},</if>
+			<if test="PackageSize!=null">PackageSize=#{PackageSize},</if>
+			<if test="AppUpdateTime!=null">AppUpdateTime=#{AppUpdateTime},</if>
+			<if test="StudioProjectKey!=null">StudioProjectKey=#{StudioProjectKey},</if>
+			<if test="DeviceName!=null">DeviceName=#{DeviceName},</if>
+			<if test="InstanceDataUploadInterval!=null">InstanceDataUploadInterval=#{InstanceDataUploadInterval},</if>
+			<if test="UpgradeMode!=null">UpgradeMode=#{UpgradeMode},</if>
+			<if test="AppVersion!=null">AppVersion=#{AppVersion},</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="ToolUpdate">
+		UPDATE ToolUpdate
+		<trim prefix="set" suffixOverrides=",">
+			<if test="AppName!=null">AppName=#{AppName},</if>
+			<if test="UpdateContent!=null">UpdateContent=#{UpdateContent},</if>
+			<if test="UpdateUrl!=null">UpdateUrl=#{UpdateUrl},</if>
+			<if test="StudioProjectKey!=null">StudioProjectKey=#{StudioProjectKey},</if>
+			<if test="DeviceName!=null">DeviceName=#{DeviceName},</if>
+			<if test="UpdateType!=0">UpdateType=#{UpdateType},</if>
+			<if test="PackageSize!=0">PackageSize=#{PackageSize},</if>
+			<if test="AppUpdateTime!=0">AppUpdateTime=#{AppUpdateTime},</if>
+			<if test="InstanceDataUploadInterval!=0">InstanceDataUploadInterval=#{InstanceDataUploadInterval},</if>
+			<if test="UpgradeMode!=0">UpgradeMode=#{UpgradeMode},</if>
+			<if test="AppVersion!=0">AppVersion=#{AppVersion},</if>
+			<if test="ClientTimestamp!=0">ClientTimestamp=#{ClientTimestamp},</if>
+			<if test="ServerTimestamp!=0">ServerTimestamp=#{ServerTimestamp},</if>
+		</trim>
+		WHERE PackageName=#{PackageName}
+	</update>
+	<delete id="delete" parameterType="ToolUpdate">
+		DELETE
+		FROM ToolUpdate
+		WHERE PackageName = #{PackageName}
+	</delete>
+</mapper>

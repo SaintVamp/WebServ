@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/login.css"/>
+</head>
+<body>
+
+<form id="slick-login">
+	<div id="titlel">SV</div>
+	<input type="text" name="用户名" id="userName">
+	<input type="password" name="密码" id="passWord">
+	<input type="button" value="Login" onclick="login()">
+</form>
+</body>
+
+<script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
+<script src="js/md5.js" type="text/javascript"></script>
+<script>
+	function login() {
+		var userName = hex_md5( $( "#userName" ).val() ).toUpperCase();
+		var passWord = hex_md5( $( "#passWord" ).val() ).toUpperCase();
+		if ( !userName || !passWord ) {
+			alert( 'name or pw is null' );
+			return;
+		}
+		$.ajax( {
+			url: 'login?' + "name=" + userName + "&pw=" + passWord,
+			type: "get",
+			contentType: 'application/json',
+			dataType: 'json',
+			success: function ( result ) {
+				if ( result == '1' ) {
+					window.location.href = "page/index.html";
+				} else {
+
+				}
+			}
+		} );
+	}
+</script>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--新建实体映射文件Test.xml，这里的namespace就是写TestMapper全类名，否则不能使用动态代理的方式调用接口TestMapper-->
+<mapper namespace="com.svt.mapper.ToolAliveMapper">
+    <select id="list" resultType="ToolAlive">
+        SELECT *
+        FROM ToolAlive
+    </select>
+    <select id="count" resultType="Integer">
+        SELECT count(*)
+        FROM ToolAlive
+    </select>
+    <select id="countParams" parameterType="ToolAlive" resultType="Integer">
+        SELECT count(*)
+        FROM ToolAlive
+        <where>
+            <if test="toolName!=null and toolName!=''">toolName = #{toolName}</if>
+            <if test="code!=null and code!=''">and code = #{code}</if>
+            <if test="status!=null and status!=''">and status = #{status}</if>
+        </where>
+    </select>
+    <select id="select" parameterType="ToolAlive" resultType="ToolAlive">
+        SELECT
+        <trim prefix="" suffixOverrides=",">
+            <if test="toolName!=null">toolName,</if>
+            <if test="code!=null">code,</if>
+            <if test="status!=null">status,</if>
+            <if test="timestamp!=null">timestamp,</if>
+        </trim>
+        FROM ToolAlive
+        <where>
+            <if test="toolName!=null and toolName!=''">toolName = #{toolName}</if>
+            <if test="code!=null and code!=''">and code = #{code}</if>
+            <if test="status!=null and status!=''">and status = #{status}</if>
+            <if test="timestamp!=null and timestamp!=''">and timestamp &lt; #{timestamp}</if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="ToolAlive">
+        INSERT INTO ToolAlive
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="toolName!=null">toolName,</if>
+            <if test="code!=null">code,</if>
+            <if test="status!=null">status,</if>
+            <if test="timestamp!=null">timestamp,</if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="toolName!=null">#{toolName},</if>
+            <if test="code!=null">#{code},</if>
+            <if test="status!=null">#{status},</if>
+            <if test="timestamp!=null">#{timestamp},</if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="ToolAlive">
+        UPDATE ToolAlive
+        <trim prefix="set" suffixOverrides=",">
+            <if test="toolName!=null">toolName=#{toolName},</if>
+            <if test="code!=null">code=#{code},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="timestamp!=null">timestamp=#{timestamp},</if>
+        </trim>
+        WHERE toolName=#{toolName} AND code=#{code}
+    </update>
+    <delete id="delete" parameterType="ToolAlive">
+        DELETE
+        FROM ToolAlive
+        WHERE toolName = #{toolName}
+          AND code = #{code}
+    </delete>
+</mapper>

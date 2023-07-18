@@ -1,0 +1,26 @@
+{
+  "Data": {
+    "Code": 200,
+    "Message": "OK",
+    "Data": {
+      "AppDomainName": "http://saintvamp.f3322.net:8848/Serv/anjian/",
+      "App2DomainName": "http://saintvamp.f3322.net:8848/Serv/anjian",
+      "App3DomainName": "http://saintvamp.f3322.net:8848/Serv/anjian",
+      "RedFingerSwitch": 0,
+      "PhoneConfig": [
+        {
+          "Active": 0,
+          "DisableMsg": "",
+          "Package": "a.a.a",
+          "JudgeMode": 1,
+          "CloudPhoneType": 6,
+          "ImageUrl": "",
+          "LinkUrl": ""
+        }
+      ],
+      "ClientTimestamp": 1648911656,
+      "ServerTimestamp": 1648911656
+    }
+  },
+  "R": 1
+}

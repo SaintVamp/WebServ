@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//www.mybatis.org//DTD Mapper 3.0//EN"
+		"svthttp://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--新建实体映射文件Test.xml，这里的namespace就是写TestMapper全类名，否则不能使用动态代理的方式调用接口TestMapper-->
+<mapper namespace="com.svt.mapper.GiftMapper">
+	<select id="list" resultType="com.svt.entity.Gift">
+		SELECT *
+		FROM Gift
+	</select>
+	<select id="count" resultType="Integer">
+		SELECT count(*)
+		FROM Gift
+	</select>
+
+	<select id="select" parameterType="com.svt.entity.Gift" resultType="com.svt.entity.Gift">
+		SELECT
+		<trim prefix="" suffixOverrides=",">
+			<if test="id!=null">id,</if>
+			<if test="time!=null">time,</if>
+		</trim>
+		FROM Gift
+		<where>
+			<if test="id!=null and id!=''">id = #{id}</if>
+			<if test="time!=null and time!=''">and time = #{time}</if>
+		</where>
+	</select>
+	<insert id="insert" parameterType="com.svt.entity.Gift">
+		INSERT INTO Gift
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id!=null">id,</if>
+			<if test="time!=null">time,</if>
+		</trim>
+		<trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+			<if test="id!=null">#{id},</if>
+			<if test="time!=null">#{time},</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.svt.entity.Gift">
+		UPDATE Gift
+		<trim prefix="set" suffixOverrides=",">
+			<if test="time!=null">time=#{time},</if>
+		</trim>
+		WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="com.svt.entity.Gift">
+		DELETE
+		FROM Gift
+		WHERE id = #{id}
+	</delete>
+	<delete id="deleteAll" parameterType="com.svt.entity.Gift">
+		DELETE
+		FROM Gift
+	</delete>
+</mapper>

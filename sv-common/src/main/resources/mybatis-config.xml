@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--新建mybatis配置信息文件mybatis-config.xml-->
+<!--首先是跟元素-->
+<configuration>
+	<!--    <settings>-->
+	<!--        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
+	<!--    </settings>-->
+	<typeAliases>
+		<typeAlias alias="Integer" type="java.lang.Integer"/>
+		<typeAlias alias="Long" type="java.lang.Long"/>
+		<typeAlias alias="HashMap" type="java.util.HashMap"/>
+		<typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap"/>
+		<typeAlias alias="ArrayList" type="java.util.ArrayList"/>
+		<typeAlias alias="LinkedList" type="java.util.LinkedList"/>
+		<!--项目实体类对应的包名-->
+		<package name="com.svt.entity"/>
+
+	</typeAliases>
+	<!--mysql数据库连接信息-->
+	<!--配置环境 , 选择一个默认的环境mysql-->
+	<environments default="development">
+		<!--配置mysql的环境-->
+		<environment id="development">
+			<!--配置事务-->
+			<transactionManager type="JDBC"/>
+			<!--配置连接池-->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+				<property name="url"
+						  value="jdbc:mysql://4.0.4.50:7848/SV?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8"/>
+				<property name="username" value="sv"/>
+				<property name="password" value="sv@8004"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<!--配置实体映射xml路径-->
+	<mappers>
+<!--		<package name ="com.svt.mapper"></package>-->
+		<mapper resource="mapper/ToolUpdate.xml"></mapper>
+		<mapper resource="mapper/UpdateInfo.xml"></mapper>
+		<mapper resource="mapper/Contract.xml"></mapper>
+		<mapper resource="mapper/ToolAlive.xml"></mapper>
+		<mapper resource="mapper/SwitchInfo.xml"></mapper>
+		<mapper resource="mapper/MegapolisInfo.xml"></mapper>
+		<mapper resource="mapper/Gift.xml"></mapper>
+
+	</mappers>
+</configuration>
+

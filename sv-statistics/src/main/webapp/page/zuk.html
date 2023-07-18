@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../css/control.css" rel="stylesheet" type="text/css"/>
+</head>
+<body style="padding:6px; overflow:hidden;">
+<table>
+    <tbody>
+    <tr>
+        <td colspan="1">
+            <button onclick="pauseASS()">暂停手机助手</button>
+        </td>
+        <td colspan="1">
+            <button onclick="stopASS()">停止手机助手</button>
+        </td>
+        <td colspan="1">
+            <button onclick="stopDeamon()">停止手机助手</button>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="5">★★★ZUK★★★</th>
+    </tr>
+    <tr>
+        <td colspan="4"><label for="nameC">名称</label><input id="nameC"></td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="getContractTime()">查时间</button>
+        </td>
+        <td colspan="3"><label for="getContractTimeR">结果</label><input id="getContractTimeR"></td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="setContractTime()">改时间</button>
+        </td>
+        <td colspan="2"><label for="timeV">时间</label><input id="timeV"></td>
+        <td colspan="1"><label for="setContractTimeR">结果</label><input id="setContractTimeR"></td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="getContractOperation()">查操作值</button>
+        </td>
+        <td>
+            <label for="updateDt">修改时间</label><input id="updateDt">
+        </td>
+        <td colspan="2"><label for="getContractOperationR">结果</label><textarea id="getContractOperationR"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="setContractOperate()">改操作值</button>
+        </td>
+        <td colspan="2"><label for="operate">值</label><input id="operate"></td>
+        <td colspan="1"><label for="setContractOperateR">结果</label><input id="setContractOperateR"></td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="setState()">改州</button>
+        </td>
+        <td><label for="flag">标志</label><input id="flag"></td>
+        <td><label for="nameS">州名</label><input id="nameS"></td>
+        <td><label for="setStateR">结果</label><input id="setStateR"></td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="getHeart()">上次心跳</button>
+        </td>
+        <td><label for="packageName">包名</label><select id="packageName">
+            <option value="com.sv.mp.shc">刷火车</option>
+            <option value="com.sv.elac">无尽</option>
+        </select></td>
+        <td><label for="key">key</label><input id="key"></td>
+        <td><label for="RHeart">结果</label><input id="RHeart"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div style="display:none;">
+</div>
+</body>
+
+
+<script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+<script src="../js/control.js" type="text/javascript"></script>
+
+</html>

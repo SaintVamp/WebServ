@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--新建实体映射文件Test.xml，这里的namespace就是写TestMapper全类名，否则不能使用动态代理的方式调用接口TestMapper-->
+<mapper namespace="com.svt.mapper.QuestMapper">
+	<select id="list" resultType="Quest">
+		SELECT *
+		FROM Quest
+	</select>
+	<select id="count" resultType="Integer">
+		SELECT count(*)
+		FROM Quest
+	</select>
+
+	<select id="select" parameterType="Quest" resultType="Quest">
+		SELECT
+		<trim prefix="" suffixOverrides=",">
+			<if test="id!=null">id,</if>
+			<if test="name!=null">name,</if>
+			<if test="flag!=null">flag,</if>
+			<if test="positive!=null">positive,</if>
+		</trim>
+		FROM Quest
+		<where>
+			<if test="id!=null and id!=''">id = #{id}</if>
+			<if test="name!=null and name!=''">and name = #{name}</if>
+			<if test="flag!=null and flag!=''">and flag = #{flag}</if>
+			<if test="positive!=null and positive!=''">and positive = #{positive}</if>
+		</where>
+	</select>
+	<insert id="insert" parameterType="Quest">
+		INSERT INTO Quest
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id!=null">id,</if>
+			<if test="name!=null">name,</if>
+			<if test="flag!=null">flag,</if>
+			<if test="positive!=null">positive,</if>
+		</trim>
+		<trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+			<if test="id!=null">#{id},</if>
+			<if test="name!=null">#{name},</if>
+			<if test="flag!=null">#{flag},</if>
+			<if test="positive!=null">#{positive},</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="Quest">
+		UPDATE Quest
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name!=null">name=#{name},</if>
+			<if test="flag!=null">flag=#{flag},</if>
+			<if test="positive!=null">positive=#{positive},</if>
+		</trim>
+		WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="Quest">
+		DELETE
+		FROM Quest
+		WHERE id = #{id}
+	</delete>
+	<delete id="deleteAll" parameterType="Quest">
+		DELETE
+		FROM Quest
+	</delete>
+</mapper>

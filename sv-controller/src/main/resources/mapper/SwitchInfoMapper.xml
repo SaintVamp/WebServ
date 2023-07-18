@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//www.mybatis.org//DTD Mapper 3.0//EN"
+		"svthttp://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--新建实体映射文件Test.xml，这里的namespace就是写TestMapper全类名，否则不能使用动态代理的方式调用接口TestMapper-->
+<mapper namespace="com.svt.mapper.SwitchInfoMapper">
+	<select id="list" resultType="com.svt.entity.SwitchInfo">
+		SELECT *
+		FROM Switch
+	</select>
+	<select id="count" resultType="Integer">
+		SELECT count(*)
+		FROM Switch
+	</select>
+
+	<select id="select" parameterType="com.svt.entity.SwitchInfo" resultType="com.svt.entity.SwitchInfo">
+		SELECT
+		<trim prefix="" suffixOverrides=",">
+			<if test="switchId!=null">switchId,</if>
+			<if test="switchStatus!=null">switchStatus,</if>
+			<if test="remark!=null">remark,</if>
+		</trim>
+		FROM Switch
+		<where>
+			<if test="switchId!=null and switchId!=''">switchId = #{switchId}</if>
+			<if test="switchStatus!=null and switchStatus!=''">and switchStatus = #{switchStatus}</if>
+			<if test="remark!=null and remark!=''">and remark = #{remark}</if>
+		</where>
+	</select>
+	<insert id="insert" parameterType="com.svt.entity.SwitchInfo">
+		INSERT INTO Switch
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="switchId!=null">switchId,</if>
+			<if test="switchStatus!=null">switchStatus,</if>
+			<if test="remark!=null">remark,</if>
+		</trim>
+		<trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+			<if test="switchId!=null">#{switchId},</if>
+			<if test="switchStatus!=null">#{switchStatus},</if>
+			<if test="remark!=null">#{remark},</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.svt.entity.SwitchInfo">
+		UPDATE Switch
+		<trim prefix="set" suffixOverrides=",">
+			<if test="switchStatus!=null">switchStatus=#{switchStatus},</if>
+			<if test="remark!=null">remark=#{remark},</if>
+		</trim>
+		WHERE switchId=#{switchId}
+	</update>
+	<delete id="delete" parameterType="com.svt.entity.SwitchInfo">
+		DELETE
+		FROM Switch
+		WHERE switchId = #{switchId}
+	</delete>
+</mapper>

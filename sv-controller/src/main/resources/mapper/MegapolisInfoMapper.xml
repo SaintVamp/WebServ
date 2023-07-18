@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//www.mybatis.org//DTD Mapper 3.0//EN"
+		"svthttp://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--新建实体映射文件Test.xml，这里的namespace就是写TestMapper全类名，否则不能使用动态代理的方式调用接口TestMapper-->
+<mapper namespace="com.svt.mapper.MegapolisInfoMapper">
+	<select id="list" resultType="com.svt.entity.MegapolisInfo">
+		SELECT *
+		FROM Megapolis
+	</select>
+	<select id="count" resultType="Integer">
+		SELECT count(*)
+		FROM Megapolis
+	</select>
+
+	<select id="select" parameterType="com.svt.entity.MegapolisInfo" resultType="com.svt.entity.MegapolisInfo">
+		SELECT
+		<trim prefix="" suffixOverrides=",">
+			<if test="id!=null">id,</if>
+			<if test="group!=null">group,</if>
+			<if test="version!=null">version,</if>
+			<if test="toolVer!=null">toolVer,</if>
+			<if test="manual!=null">manual,</if>
+			<if test="gameVer!=null">gameVer,</if>
+			<if test="assistFlag!=null">assistFlag,</if>
+			<if test="dailySend!=null">dailySend,</if>
+			<if test="animation!=null">animation,</if>
+			<if test="timestamp!=null">timestamp,</if>
+			<if test="startStatus!=null">startStatus,</if>
+			<if test="gameScale!=null">gameScale,</if>
+			<if test="backupSim!=null">backupSim,</if>
+			<if test="createStatus!=null">createStatus,</if>
+			<if test="assistUpgrade!=null">assistUpgrade,</if>
+		</trim>
+		FROM Megapolis
+		<where>
+			<if test="id!=null and id!=''">id = #{id}</if>
+			<if test="group!=null and group!=''">and group = #{group}</if>
+			<if test="version!=null and version!=''">and version = #{version}</if>
+			<if test="toolVer!=null and toolVer!=''">and toolVer = #{toolVer}</if>
+			<if test="manual!=null and manual!=''">and manual = #{manual}</if>
+			<if test="gameVer!=null and gameVer!=''">and gameVer = #{gameVer}</if>
+			<if test="assistFlag!=null and assistFlag!=''">and assistFlag = #{assistFlag}</if>
+			<if test="dailySend!=null and dailySend!=''">and dailySend = #{dailySend}</if>
+			<if test="animation!=null and animation!=''">and animation = #{animation}</if>
+			<if test="timestamp!=null and timestamp!=''">and timestamp = #{timestamp}</if>
+			<if test="startStatus!=null and startStatus!=''">and startStatus = #{startStatus}</if>
+			<if test="gameScale!=null and gameScale!=''">and gameScale = #{gameScale}</if>
+			<if test="backupSim!=null and backupSim!=''">and backupSim = #{backupSim}</if>
+			<if test="createStatus!=null and createStatus!=''">and createStatus = #{createStatus}</if>
+			<if test="backupGame!=null and backupGame!=''">and backupGame = #{backupGame}</if>
+			<if test="assistUpgrade!=null and assistUpgrade!=''">and assistUpgrade = #{assistUpgrade}</if>
+		</where>
+	</select>
+	<insert id="insert" parameterType="com.svt.entity.MegapolisInfo">
+		INSERT INTO Megapolis
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id!=null">id,</if>
+			<if test="group!=null">group,</if>
+			<if test="version!=null">version,</if>
+			<if test="toolVer!=null">toolVer,</if>
+			<if test="manual!=null">manual,</if>
+			<if test="gameVer!=null">gameVer,</if>
+			<if test="assistFlag!=null">assistFlag,</if>
+			<if test="dailySend!=null">dailySend,</if>
+			<if test="animation!=null">animation,</if>
+			<if test="timestamp!=null">timestamp,</if>
+			<if test="startStatus!=null">startStatus,</if>
+			<if test="gameScale!=null">gameScale,</if>
+			<if test="backupSim!=null">backupSim,</if>
+			<if test="createStatus!=null">createStatus,</if>
+			<if test="assistUpgrade!=null">assistUpgrade,</if>
+		</trim>
+		<trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+			<if test="id!=null">#{id}</if>
+			<if test="group!=null">#{group}</if>
+			<if test="version!=null">#{version}</if>
+			<if test="toolVer!=null">#{toolVer}</if>
+			<if test="manual!=null">#{manual}</if>
+			<if test="gameVer!=null">#{gameVer}</if>
+			<if test="assistFlag!=null">#{assistFlag}</if>
+			<if test="dailySend!=null">#{dailySend}</if>
+			<if test="animation!=null">#{animation}</if>
+			<if test="timestamp!=null">#{timestamp}</if>
+			<if test="startStatus!=null">#{startStatus}</if>
+			<if test="gameScale!=null">#{gameScale}</if>
+			<if test="backupSim!=null">#{backupSim}</if>
+			<if test="createStatus!=null">#{createStatus}</if>
+			<if test="backupGame!=null">#{backupGame}</if>
+			<if test="assistUpgrade!=null">#{assistUpgrade}</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.svt.entity.MegapolisInfo">
+		UPDATE Megapolis
+		<trim prefix="set" suffixOverrides=",">
+			<if test="switchStatus!=null">switchStatus=#{switchStatus},</if>
+			<if test="group!=null">group=#{group}</if>
+			<if test="version!=null">version=#{version}</if>
+			<if test="toolVer!=null">toolVer=#{toolVer}</if>
+			<if test="manual!=null">manual=#{manual}</if>
+			<if test="gameVer!=null">gameVer=#{gameVer}</if>
+			<if test="assistFlag!=null">assistFlag=#{assistFlag}</if>
+			<if test="dailySend!=null">dailySend=#{dailySend}</if>
+			<if test="animation!=null">animation=#{animation}</if>
+			<if test="timestamp!=null">timestamp=#{timestamp}</if>
+			<if test="startStatus!=null">startStatus=#{startStatus}</if>
+			<if test="gameScale!=null">gameScale=#{gameScale}</if>
+			<if test="backupSim!=null">backupSim=#{backupSim}</if>
+			<if test="createStatus!=null">createStatus=#{createStatus}</if>
+			<if test="backupGame!=null">backupGame=#{backupGame}</if>
+			<if test="assistUpgrade!=null">assistUpgrade=#{assistUpgrade}</if>
+		</trim>
+		WHERE id = #{id}
+	</update>
+	<delete id="delete" parameterType="com.svt.entity.MegapolisInfo">
+		DELETE
+		FROM Megapolis
+		WHERE id = #{id}
+	</delete>
+</mapper>

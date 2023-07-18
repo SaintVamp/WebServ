@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//www.mybatis.org//DTD Mapper 3.0//EN"
+		"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--新建实体映射文件Test.xml，这里的namespace就是写TestMapper全类名，否则不能使用动态代理的方式调用接口TestMapper-->
+<mapper namespace="com.svt.mapper.ContractMapper">
+	<select id="listContract" resultType="com.svt.entity.Contract">
+		SELECT *
+		FROM Contract
+	</select>
+	<select id="count" resultType="Integer">
+		SELECT count(*)
+		FROM Contract
+	</select>
+	<select id="getAreaNum" parameterType="com.svt.entity.Contract" resultType="String">
+		SELECT `id`
+		FROM Contract
+		WHERE `timestamp` &lt; #{timestamp}
+		  AND `flag` = #{flag}
+
+	</select>
+	<select id="select" parameterType="com.svt.entity.Contract" resultType="com.svt.entity.Contract">
+		SELECT
+		<trim prefix="" suffixOverrides=",">
+			<if test="id!=null">id,</if>
+			<if test="name!=null">`name`,</if>
+			<if test="time!=null">`time`,</if>
+			<if test="timestamp!=null">`timestamp`,</if>
+			<if test="flag!=null">flag,</if>
+			<if test="operation!=null">operation,</if>
+			<if test="updateDt!=null">updateDt,</if>
+		</trim>
+		FROM Contract
+		<where>
+			<if test="name!=null and name!=''">`name` = #{name}</if>
+			<if test="time!=null and time!=''">and `time` = #{time}</if>
+			<if test="timestamp!=null and timestamp!=''">and `timestamp` &lt; #{timestamp}</if>
+			<if test="flag!=null and flag!=''">and flag = #{flag}</if>
+			<if test="operation!=null and operation!=''">and operation = #{operation}</if>
+			<if test="updateDt!=null and updateDt!=''">and updateDt = #{updateDt}</if>
+			<if test="id!=null and id!=''">and id = #{id}</if>
+		</where>
+
+	</select>
+	<insert id="insert" parameterType="com.svt.entity.Contract">
+		INSERT INTO Contract
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name!=null">`name`,</if>
+			<if test="id!=null">`id`,</if>
+			<if test="time!=null">`time`,</if>
+			<if test="timestamp!=null">`timestamp`,</if>
+			<if test="flag!=null">flag,</if>
+			<if test="operation!=null">operation,</if>
+			<if test="updateDt!=null">updateDt,</if>
+		</trim>
+		<trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+			<if test="name!=null">#{name},</if>
+			<if test="id!=null">#{id},</if>
+			<if test="time!=null">#{time},</if>
+			<if test="timestamp!=null">#{timestamp},</if>
+			<if test="flag!=null">#{flag},</if>
+			<if test="operation!=null">#{operation},</if>
+			<if test="updateDt!=null">#{updateDt},</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.svt.entity.Contract">
+		UPDATE Contract
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name!=null">`name` = #{name},</if>
+			<if test="time!=null">`time` = #{time},</if>
+			<if test="timestamp!=0">`timestamp` = #{timestamp},</if>
+			<if test="flag!=0">`flag` = #{flag},</if>
+			<if test="operation!=null">`operation` = #{operation},</if>
+			<if test="updateDt!=null">`updateDt` = #{updateDt},</if>
+		</trim>
+		WHERE id = #{id}
+	</update>
+	<delete id="delete" parameterType="com.svt.entity.Contract">
+		DELETE
+		FROM Contract
+		WHERE id = #{id}
+	</delete>
+</mapper>

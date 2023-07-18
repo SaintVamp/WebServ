@@ -1,0 +1,24 @@
+table {
+    border: 1px black solid;
+}
+
+input {
+    width: 92%;
+}
+
+textarea {
+    width: 366px;
+    height: 100px;
+}
+
+td {
+    border: 1px black solid;
+    width: 120px;
+    align-items: center;
+    text-align: center
+}
+
+th {
+    align-items: center;
+    text-align: center
+}

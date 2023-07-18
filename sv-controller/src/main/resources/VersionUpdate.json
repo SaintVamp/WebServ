@@ -1,0 +1,40 @@
+{
+  "Code": 200,
+  "Message": "请求成功！",
+  "Data": {
+    "UpdateType": 2,
+    "AppName": "圣威无边界",
+    "UpdateContent": "更新内容",
+    "UpdateUrl": "http://ajres.mobileanjian.com/PaidEditionMacro/App/755/a64afb084a8d484c843e9ce880841d24.apk",
+    "PackageName": "",
+    "PackageSize": 20535218,
+    "AppUpdateTime": 1648904499,
+    "StudioProjectKey": null,
+    "DeviceName": "realmed0db6184",
+    "InstanceDataUploadInterval": 30,
+    "UpgradeMode": 1,
+    "AppVersion": 1648904274,
+    "ClientTimestamp": 1648904596,
+    "ServerTimestamp": 1648904596
+  },
+{
+  "Code": 200,
+  "Message": "请求成功！",
+  "Data": {
+    "UpdateType": 0,
+    "AppName": null,
+    "UpdateContent": null,
+    "UpdateUrl": null,
+    "PackageName": null,
+    "PackageSize": 0,
+    "AppUpdateTime": 0,
+    "StudioProjectKey": null,
+    "DeviceName": "realmed0db6184",
+    "InstanceDataUploadInterval": 0,
+    "UpgradeMode": 0,
+    "AppVersion": 0,
+    "ClientTimestamp": 1649049868,
+    "ServerTimestamp": 1649049869
+  }
+}
+}

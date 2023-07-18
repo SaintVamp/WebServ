@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--新建实体映射文件Test.xml，这里的namespace就是写TestMapper全类名，否则不能使用动态代理的方式调用接口TestMapper-->
+<mapper namespace="com.svt.mapper.UpdateInfoMapper">
+    <select id="list" resultType="updateInfo">
+        SELECT *
+        FROM UpdateInfo
+    </select>
+    <select id="count" resultType="Integer">
+        SELECT count(*)
+        FROM UpdateInfo
+    </select>
+    <select id="select" parameterType="UpdateInfo" resultType="UpdateInfo">
+        SELECT
+        <trim prefix="" suffixOverrides=",">
+            <if test="ToolName!=null">ToolName,</if>
+            <if test="DownLoadPath!=null">DownLoadPath,</if>
+            <if test="UpdateNotice!=null">UpdateNotice,</if>
+            <if test="UpdateType!=null">UpdateType,</if>
+            <if test="UpdateTime!=null">UpdateTime,</if>
+            <if test="FileSize!=null">FileSize,</if>
+            <if test="Version!=null">Version,</if>
+        </trim>
+        FROM UpdateInfo
+        WHERE ToolName = #{ToolName}
+    </select>
+    <insert id="insert" parameterType="UpdateInfo">
+        INSERT INTO UpdateInfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ToolName!=null">ToolName,</if>
+            <if test="DownLoadPath!=null">DownLoadPath,</if>
+            <if test="UpdateNotice!=null">UpdateNotice,</if>
+            <if test="UpdateType!=null">UpdateType,</if>
+            <if test="UpdateTime!=null">UpdateTime,</if>
+            <if test="FileSize!=null">FileSize,</if>
+            <if test="Version!=null">Version,</if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="ToolName!=null">ToolName=#{ToolName},</if>
+            <if test="DownLoadPath!=null">DownLoadPath=#{DownLoadPath},</if>
+            <if test="UpdateNotice!=null">UpdateNotice=#{UpdateNotice},</if>
+            <if test="UpdateContent!=null">UpdateContent=#{UpdateContent},</if>
+            <if test="UpdateType!=null">UpdateType=#{UpdateType},</if>
+            <if test="UpdateTime!=null">UpdateTime=#{UpdateTime},</if>
+            <if test="FileSize!=null">FileSize=#{FileSize},</if>
+            <if test="Version!=null">Version=#{Version},</if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="UpdateInfo">
+        UPDATE UpdateInfo
+        <trim prefix="set" suffixOverrides=",">
+            <if test="DownLoadPath!=null">DownLoadPath=#{DownLoadPath},</if>
+            <if test="UpdateNotice!=null">UpdateNotice=#{UpdateNotice},</if>
+            <if test="UpdateType!=null">UpdateType=#{UpdateType},</if>
+            <if test="UpdateTime!=null">UpdateTime=#{UpdateTime},</if>
+            <if test="FileSize!=0">FileSize=#{FileSize},</if>
+            <if test="Version!=0">Version=#{Version},</if>
+        </trim>
+        WHERE ToolName=#{ToolName}
+    </update>
+    <delete id="delete" parameterType="UpdateInfo">
+        DELETE
+        FROM UpdateInfo
+        WHERE ToolName = #{ToolName}
+    </delete>
+</mapper>
